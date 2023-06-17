@@ -27,16 +27,20 @@ body {
   margin-top: 24px;
 }
 
+.disputed {
+  color: #ef4444;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
 /* MAIN LAYOUT */
-.container {
+#root {
   max-width: 1500px;
   margin: 0 auto;
 }
 
 .header {
   margin-bottom: 40px;
-  padding: 10px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -46,13 +50,22 @@ body {
   display: grid;
   grid-template-columns: 250px 1fr;
   gap: 48px;
+  /* background-color: red; */
+
+  height: calc(100vh - 68px - 40px - 48px - 48px);
 }
 
 @media (max-width: 900px) {
   .main {
     grid-template-columns: 1fr;
+    /* Fixed in a video text overlay, to fix scrolling issue on small screens */
   }
 }
+
+/* section {
+  overflow: scroll;
+  padding-bottom: 40px;
+} */
 
 .partner {
   text-align: center;
@@ -150,7 +163,7 @@ h1 {
   background-color: #44403c;
   margin-bottom: 16px;
   padding: 16px 30px;
-  border: 2px solid;
+  border: 1px solid;
   border-radius: 16px;
   letter-spacing: -1px;
 

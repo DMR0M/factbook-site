@@ -7,6 +7,7 @@ import supabase from "../client/supabase";
 
 const Fact = ({ fact, setFacts }) => {
   const [isUpdating, setIsUpdating] = useState(false);
+  const isDisputed = fact.votesInteresting + fact.votesMindblowing < fact.votesFalse;
   // Update Votes
   const handleVote = async (columnName) => {
     setIsUpdating(true);
@@ -28,6 +29,7 @@ const Fact = ({ fact, setFacts }) => {
   return (
     <li key={fact.id} className="fact">
       <p>
+        {isDisputed ? <span className="disputed">[🚫 DISPUTED]  </span> : null}
         {fact.text}
         <a className="source" href={fact.source}>
           (Source)
@@ -56,10 +58,7 @@ const Fact = ({ fact, setFacts }) => {
         >
           🤯 <strong>{fact.votesMindblowing}</strong>
         </button>
-        <button
-          onClick={() => handleVote("votesFalse")}
-          disabled={isUpdating}
-        >
+        <button onClick={() => handleVote("votesFalse")} disabled={isUpdating}>
           ⛔️ <strong>{fact.votesFalse}</strong>
         </button>
       </div>
